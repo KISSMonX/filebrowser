@@ -3,8 +3,8 @@ package bolt
 import (
 	"reflect"
 
+	fm "github.com/KISSMonX/filebrowser"
 	"github.com/asdine/storm"
-	fm "github.com/filebrowser/filebrowser"
 )
 
 // UsersStore is a users store.

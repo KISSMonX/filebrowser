@@ -13,7 +13,7 @@ import (
 	"strings"
 	"time"
 
-	fb "github.com/filebrowser/filebrowser"
+	fb "github.com/KISSMonX/filebrowser"
 	"github.com/hacdias/fileutils"
 )
 

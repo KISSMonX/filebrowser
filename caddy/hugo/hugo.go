@@ -3,9 +3,9 @@ package hugo
 import (
 	"net/http"
 
-	"github.com/filebrowser/filebrowser"
-	"github.com/filebrowser/filebrowser/caddy/parser"
-	h "github.com/filebrowser/filebrowser/http"
+	"github.com/KISSMonX/filebrowser"
+	"github.com/KISSMonX/filebrowser/caddy/parser"
+	h "github.com/KISSMonX/filebrowser/http"
 	"github.com/mholt/caddy"
 	"github.com/mholt/caddy/caddyhttp/httpserver"
 )

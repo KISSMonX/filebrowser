@@ -10,17 +10,15 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/KISSMonX/filebrowser"
+	"github.com/KISSMonX/filebrowser/bolt"
+	h "github.com/KISSMonX/filebrowser/http"
+	"github.com/KISSMonX/filebrowser/staticgen"
 	"github.com/asdine/storm"
-
-	"gopkg.in/natefinch/lumberjack.v2"
-
-	"github.com/filebrowser/filebrowser"
-	"github.com/filebrowser/filebrowser/bolt"
-	h "github.com/filebrowser/filebrowser/http"
-	"github.com/filebrowser/filebrowser/staticgen"
 	"github.com/hacdias/fileutils"
 	flag "github.com/spf13/pflag"
 	"github.com/spf13/viper"
+	"gopkg.in/natefinch/lumberjack.v2"
 )
 
 var (

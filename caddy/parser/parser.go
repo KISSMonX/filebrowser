@@ -10,10 +10,10 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/KISSMonX/filebrowser"
+	"github.com/KISSMonX/filebrowser/bolt"
+	"github.com/KISSMonX/filebrowser/staticgen"
 	"github.com/asdine/storm"
-	"github.com/filebrowser/filebrowser"
-	"github.com/filebrowser/filebrowser/bolt"
-	"github.com/filebrowser/filebrowser/staticgen"
 	"github.com/hacdias/fileutils"
 	"github.com/mholt/caddy"
 	"github.com/mholt/caddy/caddyhttp/httpserver"
