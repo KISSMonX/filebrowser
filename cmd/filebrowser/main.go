@@ -46,6 +46,8 @@ var (
 )
 
 func init() {
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
 	flag.StringVarP(&config, "config", "c", "", "Configuration file")
 	flag.IntVarP(&port, "port", "p", 0, "HTTP Port (default is random)")
 	flag.StringVarP(&addr, "address", "a", "", "Address to listen to (default is all of them)")

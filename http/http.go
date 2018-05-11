@@ -104,6 +104,29 @@ func staticHandler(c *fb.Context, w http.ResponseWriter, r *http.Request) (int, 
 
 // apiHandler is the main entry point for the /api endpoint.
 func apiHandler(c *fb.Context, w http.ResponseWriter, r *http.Request) (int, error) {
+	var code int
+	var err error
+	originURLPath := r.URL.Path
+	var newURLPath string
+
+	// 第一次取 router, 用于提前处理 download
+	c.Router, newURLPath = splitURL(originURLPath)
+
+	if c.Router == "download" {
+		var err error
+		c.User = c.DefaultUser
+		r.URL.Path = newURLPath
+
+		c.File, err = fb.GetInfo(r.URL, c.FileBrowser, c.User)
+		if err != nil {
+			log.Println("错误在这里: ", c.File, err.Error())
+			return ErrorToHTTP(err, false), err
+		}
+
+		code, err = downloadHandler(c, w, r)
+		return code, err
+	}
+
 	if r.URL.Path == "/auth/get" {
 		return authHandler(c, w, r)
 	}
@@ -117,7 +140,8 @@ func apiHandler(c *fb.Context, w http.ResponseWriter, r *http.Request) (int, err
 		return http.StatusForbidden, nil
 	}
 
-	c.Router, r.URL.Path = splitURL(r.URL.Path)
+	// 第二次取 router 和 path
+	c.Router, r.URL.Path = splitURL(originURLPath)
 
 	if !c.User.Allowed(r.URL.Path) {
 		return http.StatusForbidden, nil
@@ -144,9 +168,6 @@ func apiHandler(c *fb.Context, w http.ResponseWriter, r *http.Request) (int, err
 			return ErrorToHTTP(err, false), err
 		}
 	}
-
-	var code int
-	var err error
 
 	switch c.Router {
 	case "download":
